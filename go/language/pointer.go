@@ -88,6 +88,8 @@ func increment2(inc *int) {
 // stayOnStack shows how the variable does not escape.
 // Since we know the size of the user value at compiled time, the compiler will put this on a stack
 // frame.
+
+// 會先放在 stayOnStack 的 stack 上，回傳時再放一份到 main 的 stack
 func stayOnStack() user {
 	// In the stayOnStack stack frame, create a value and initialize it.
 	u := user{
@@ -131,6 +133,9 @@ func stayOnStack() user {
 // out there on the heap. main will end up having a pointer to the heap.
 // In fact, this allocation happens immediately on the heap. escapeToHeap is gonna have a pointer
 // to the heap. But u is gonna base on value semantic.
+
+// compiler 會發現這個傳回去給 caller 後還會被使用，所以直接把 user 放在 heap。若是放在這個 function 的 stack frame 當 return 時
+// 放在裡面的記憶體就不能用了
 func escapeToHeap() *user {
 	u := user{
 		name:  "Hoanh An",
@@ -139,6 +144,9 @@ func escapeToHeap() *user {
 
 	return &u
 }
+
+// 除了這種狀況還有其他情況 escape analysis 會決定把東西放到 heap，例如 local variable 太大時（巨大陣列）
+// 基本上放在 stack frame 效率比較好，function return 時東西就被丟了，放在 heap 還要靠 gc 去清理。
 
 // ----------------------------------
 // What if we run out of stack space?

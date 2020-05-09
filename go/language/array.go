@@ -48,6 +48,10 @@
 // Translation lookaside buffer
 // ----------------------------
 
+// Page table (放記憶體中) = 存 virtual memory 的 page num 與 physical memory frame num 編號對應
+// TLB (cache中) = 存常用的 page table entry，要找對應的physical mem frame num 時先來TLB找看看
+
+
 // Back to the different granularity, the caching system moves data in and out the hardware at 64
 // bytes at a time. However, the operating system manages memory by paging its 4K (traditional page
 // size for an operating system).

@@ -8,6 +8,11 @@ type example struct {
 	counter int16
 	pi      float32
 }
+// padding and alignment
+// 不同機器會有不同的 alignment value(對齊係數) 可能是 2, 4, 8 之類的
+// 在 struct 上 field 的順序會影響到 padding 的大小
+// 造成雖然有一樣的 field 的 struct 卻可能有不同的 size
+// 可參考這篇的圖解 https://ms2008.github.io/2019/08/01/golang-memory-alignment/
 
 func main() {
 	// ----------------------

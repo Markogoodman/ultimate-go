@@ -2,6 +2,9 @@
 // CPU CACHE
 // ---------
 
+// cache 速度比 memory 快很多，cache 會有個方法去預測我們的資料存取，把他先載入 cache，若我們寫的程式是很好預測資料存取的 pattern，
+// cache miss 會減少許多，下面有陣列舉例
+
 // Cores DO NOT access main memory directly but their local caches.
 // What store in caches are data and instruction.
 

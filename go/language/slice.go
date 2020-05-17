@@ -85,6 +85,7 @@ func main() {
 	// --------------------------------------------------------
 	// Idea of appending: making slice a dynamic data structure
 	// --------------------------------------------------------
+	// append 發現當 len == cap 時就把 cap 增加，搬到另一段記憶體
 	fmt.Printf("\n=> Idea of appending\n")
 
 	// Declare a nil slice of strings, set to its zero value.
@@ -146,13 +147,14 @@ func main() {
 	// --------------
 
 	// Take a slice of slice2. We want just indexes 2 and 3.
-	// The length is slice3 is 2 and capacity is 6.
+	// The length of slice3 is 2 and capacity is 6.
 	// Parameters are [starting_index : (starting_index + length)]
 	// By looking at the output, we can see that they are sharing the same backing array.
 	// These slice headers get to stay on the stack when we use these value semantics. Only the
 	// backing array that needed to be on the heap.
 	slice3 := slice2[2:4]
-
+	// 這樣 slice3 和 slice2 會共用同個陣列
+	
 	fmt.Printf("\n=> Slice of slice (before)\n")
 	inspectSlice(slice2)
 	inspectSlice(slice3)
@@ -211,10 +213,10 @@ func main() {
 	twohundred := &x[1]
 
 	// Append a new value to the slice. This line of code raises a red flag.
-	// We have x is a slice with length 7, capacity 7. Since the length and capacity is the same,
+	// We have x as a slice with length 7, capacity 7. Since the length and capacity is the same,
 	// append doubles its size then copy values over. x nows points to different memory block and
 	// has a length of 8, capacity of 14.
-	x = append(x, 800)
+	x = append(x, 800) // 超過 cap，資料被搬走，所以x[1]++不會影響到twohundred
 
 	// When we change the value of the second element of the slice, twohundred is not gonna change
 	// because it points to the old slice. Everytime we read it, we will get the wrong value.

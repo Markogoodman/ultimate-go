@@ -152,6 +152,7 @@ func main() {
 	// These slice headers get to stay on the stack when we use these value semantics. Only the
 	// backing array that needed to be on the heap.
 	slice3 := slice2[2:4]
+	// slice3 與 slice2 會共用陣列
 
 	fmt.Printf("\n=> Slice of slice (before)\n")
 	inspectSlice(slice2)
@@ -215,6 +216,7 @@ func main() {
 	// append doubles its size then copy values over. x nows points to different memory block and
 	// has a length of 8, capacity of 14.
 	x = append(x, 800)
+	// 超過 cap 所以 allocate 新的記憶體把資料搬過去了，所以 下面的x[1]++不會改到twohundred
 
 	// When we change the value of the second element of the slice, twohundred is not gonna change
 	// because it points to the old slice. Everytime we read it, we will get the wrong value.
@@ -227,6 +229,7 @@ func main() {
 	// -----
 	// UTF-8
 	// -----
+	// 參考這個 https://blog.chunnorris.cc/2015/04/unicode.html
 	fmt.Printf("\n=> UTF-8\n")
 
 	// Everything in Go is based on UTF-8 character sets.

@@ -230,6 +230,10 @@ func main() {
 	// UTF-8
 	// -----
 	// 參考這個 https://blog.chunnorris.cc/2015/04/unicode.html
+	// UTF-8, 以 8bit(1byte) 為單位
+	// 是變動長度的編碼，英文字母可用1byte，中文就會自動增加byte數，1~4 (6?) bytes
+	// code point 指的是 unicode 對於某一個字元給的編號，通常用U+XXXX表示 (X為16進位，可以不只4位)
+	// 例如 "啦" 的code point是U+5566，utf8編碼是e595a6，utf16是5566。
 	fmt.Printf("\n=> UTF-8\n")
 
 	// Everything in Go is based on UTF-8 character sets.
@@ -241,8 +245,8 @@ func main() {
 	// are just bytes. That is what we are storing.
 	// In our example, the first 3 bytes represents a single code point that represents that single
 	// character. We can have anywhere from 1 to 4 bytes representing a code point (a code point is
-	// a 32 bit value) and anywhere from 1 to multiple code points can actually represent a
-	// character. To keep it simple, we only have 3 bytes representing 1 code point representing 1
+	// a 32 bit value <- 這個好像不太正確，應該不只32bit) and anywhere from 1 to multiple code points can actually represent a
+	// character <- 這也不知道在說啥. To keep it simple, we only have 3 bytes representing 1 code point representing 1
 	// character. So we can read s as 3 bytes, 3 bytes, 1 byte, 1 byte,... (since there are only 2
 	// Chinese characters in the first place, the rest are English)
 	s := "世界 means world"
@@ -256,6 +260,8 @@ func main() {
 	// When we are ranging over a string, are we doing it byte by byte or code point by code point or
 	// character by character?
 	// The answer is code point by code point.
+	
+	// !?!?!?!?真假
 	// On the first iteration, i is 0. On the next one, i is 3 because we are moving to the next
 	// code point. Then i is 6.
 	for i, r := range s {

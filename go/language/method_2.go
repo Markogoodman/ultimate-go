@@ -114,6 +114,10 @@ func (t Time) Add(d Duration) Time {
 // The function is using value semantics for type Time.
 // func div(t Time, d Duration) (qmod2 int, r Duration) {}
 
+// 可以參考下列網址，unmarshal裡面會allocate記憶體，如果沒有傳指標外面會看不見，以及map是啥
+// https://stackoverflow.com/questions/45122496/why-does-json-unmarshal-need-a-pointer-to-a-map-if-a-map-is-a-reference-type/45123370
+// https://dave.cheney.net/2017/04/29/there-is-no-pass-by-reference-in-go
+
 // The only use of pointer semantics for the `Time` API are these Unmarshal-related functions:
 // func (t *Time) UnmarshalBinary(data []byte) error {}
 // func (t *Time) GobDecode(data []byte) error {}

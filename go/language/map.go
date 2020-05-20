@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 // user defines a user in the program.
+// 通常會開頭用大寫
 type user struct {
 	name    string
 	surname string
@@ -62,7 +63,7 @@ func main() {
 	// Find the Roy key.
 	// If found is True, we will get a copy value of that type.
 	// if found is False, u is still a value of type user but is set to its zero value.
-	u1, found1 := users2["Roy"]
+	u1, found1 := users2["Roy"] // 通常 found 那邊會使用 ok
 	u2, found2 := users2["Ford"]
 
 	// Display the value and found flag.

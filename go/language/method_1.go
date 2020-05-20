@@ -32,6 +32,7 @@ func main() {
 	// Value and pointer receiver call
 	// -------------------------------
 
+	// 不管是 value or pointer 都可以 call 兩種方法 
 	// Values of type user can be used to call methods declared with both value and pointer receivers.
 	bill := user{"Bill", "bill@email.com"}
 	bill.notify()

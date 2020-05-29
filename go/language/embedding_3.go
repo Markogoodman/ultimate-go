@@ -27,6 +27,8 @@ type admin struct {
 	user
 	level string
 }
+// embedded user 讓 admin 也實作了 notifier
+
 
 func main() {
 	// Create an admin user.

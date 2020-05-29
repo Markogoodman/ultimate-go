@@ -72,7 +72,12 @@ func main() {
 	// Go can adjust to make the call.
 	// However, we are not trying to call a method here. We are trying to store a concrete type
 	// value inside the interface. For that to happen, that value must satisfy the contract.
-
+	
+	// 要把實體存到interface內必須符合
+	
+	// pointer 實作了一個 method 符合了 interface，value 不會被視為符合該 interface，因為 value 不一定有 address，參考下面範例
+ 	// 反過來則沒關係，Go會自動轉換
+	
 	// The question now becomes: Why can't pointer receiver be associated with the method sets for
 	// value? What is the integrity issue here that doesn't allow us to use pointer semantic for
 	// value of type T?
@@ -106,6 +111,7 @@ func main() {
 
 	// The lesson:
 	// -----------
+	// 結論～～～～
 	// If we implement interface using pointer receiver, we must use pointer semantic.
 	// If we implement interface using value receiver, we then have the ability to use value
 	// semantic and pointer semantic. However, for consistency, we want to use value semantic most

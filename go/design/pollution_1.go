@@ -1,3 +1,8 @@
+// 結論 看原作者寫的
+// https://www.ardanlabs.com/blog/2016/10/avoid-interface-pollution.html
+// 但不太懂
+
+
 // -------------------
 // Interface Pollution
 // -------------------

@@ -2,6 +2,11 @@
 // Interface Conversions
 // ---------------------
 
+// Mover = MoveLocker 沒問題，右邊assign時多得可以丟掉，Locker功能會被藏起來
+// 反過來則不行
+// 若是要 MoveLocker = Mover，要確定Mover裡面真的存有Mover和Locker的功能，然後使用type assertion
+// MoveLocker, ok = Mover.(MoveLock)
+
 package main
 
 import "fmt"

@@ -2,6 +2,8 @@
 // Error variables
 // ---------------
 
+// 不要直接拿裡面的 string 去判斷，
+
 // Sample program to show how to use error variables to help the caller determine
 // the exact error being returned.
 

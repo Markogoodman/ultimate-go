@@ -23,13 +23,18 @@
 // make sure everything work.
 
 // A couple days later, they come to us with a problem. They have to write tests and they cannot
-// hit the pubsub system directly when my test run so they need to mock that out. They want us to
+// hit the pubsub system directly, so they need to mock that out. They want us to
 // give them an interface. However, we don't need an interface because our API doesn't need an
 // interface. They need an interface, not us. They need to decouple from the pubsub system, not us.
 // They can do any decoupling they want because this is Go. The next file will be an example of
 // their application.
 
 // Package pubsub simulates a package that provides publication/subscription type services.
+
+// PubSub不需要interface，所以不該為了讓別人寫測試來替換PubSub而寫interface，多了無意義的indirect
+// 應該由PubSub的使用者自己寫interface來接PubSub，使用者再自己用這個interface去mock一個PubSub
+
+// 會把interface export的情況比較像Copy(w Writer, r Reader)這種，需要export很general的func給大家用時，才會開放interface讓大家來實作
 
 package main
 

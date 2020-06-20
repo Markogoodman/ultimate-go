@@ -2,6 +2,9 @@
 // https://www.ardanlabs.com/blog/2016/10/avoid-interface-pollution.html
 // 但不太懂
 
+// interface大多是放在實際會使用到interface值的package中
+// 會把interface export給別人用的情況比較像Copy(w Writer, r Reader)這種，需要export很general的func給大家用時，才會開放interface讓大家來實作
+
 
 // -------------------
 // Interface Pollution

@@ -34,8 +34,6 @@
 // PubSub不需要interface，所以不該為了讓別人寫測試來替換PubSub而寫interface，多了無意義的indirect
 // 應該由PubSub的使用者自己寫interface來接PubSub，使用者再自己用這個interface去mock一個PubSub
 
-// 會把interface export的情況比較像Copy(w Writer, r Reader)這種，需要export很general的func給大家用時，才會開放interface讓大家來實作
-
 package main
 
 import (

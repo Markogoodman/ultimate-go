@@ -2,6 +2,8 @@
 // Type as context
 // ---------------
 
+// 如果需要較複雜的 error (不止string內容)才需要自己做
+
 // It is not always possible to be able to say the interface value itself will be enough context.
 // Sometimes, it requires more context. For example, a networking problem can be really
 // complicated. Error variables wouldn't work there.

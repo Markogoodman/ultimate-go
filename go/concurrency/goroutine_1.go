@@ -1,3 +1,4 @@
+// 有點看不董在公三小
 // ----------------------
 // Go Scheduler Internals
 // ----------------------
@@ -19,6 +20,9 @@
 // It has to save all the possible states in order to be able to restore that to exactly the way it
 // was. If there are fewer threads, each thread can get more time to be rescheduled. If there are more
 // threads, each thread has less time over a long period of time.
+
+// 用更少 THREAD 做更多事情
+// Thread多 = context switch多
 
 // "Less is more" is a really big concept here when we start to write concurrent software. We want to
 // leverage the preemptive scheduler. So the Go's scheduler, the logical processor actually runs in
